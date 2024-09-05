@@ -6,12 +6,12 @@ variable "ins_types" {
   type = list(string)
 }
 
-variable "ins_aim" {
+variable "ins_ami" {
   type = list(string)
 }
 
 resource "aws_instance" "ins_tf" {
-  ami           = var.ins_aim[count.index]
+  ami           = var.ins_ami[count.index]
   instance_type = var.ins_types[count.index]
   count         = length(var.ins_names)
   tags = {
